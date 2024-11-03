@@ -14,6 +14,9 @@ class NoWanderingTrader : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoWanderingTrader plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("doTraderSpawning", "true")
+            logger.info("NoWanderingTrader plugin has been disabled.")
+        }
     }
 }
